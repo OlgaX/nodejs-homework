@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Find minimum</title>
+
+    <script>
+        window.onload = function () {
+            const input = document.getElementById('input');
+            const submit = document.getElementById('submit');
+            const output = document.getElementById('output');
+
+            const getValue = function () {
+                output.innerText = '';
+
+                if (!input.value) return;
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/calculate/min');
+                xhr.onload = function () {
+                    output.innerHTML = this.responseText;
+                };
+                xhr.onerror = (err) => console.log(err);
+                xhr.send(input.value);
+            };
+
+            submit.addEventListener('click', getValue);
+
+        }
+    </script>
+
+</head>
+<body>
+
+<h1>Find minimum</h1>
+
+<form action="">
+    <label for="input">Set numbers</label>
+    <input type="text"
+           id="input">
+    <button type="button"
+            id="submit">Calculate</button>
+    <p>Result: <mark id="output"></mark></p>
+</form>
+
+</body>
+</html>
