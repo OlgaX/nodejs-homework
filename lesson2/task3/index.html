@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Find minimum & File explorer</title>
+
+    <script>
+        window.onload = function () {
+            // Find minimum
+            const calcInput = document.getElementById('calcInput');
+            const calcSubmit = document.getElementById('calcSubmit');
+            const calcOutput = document.getElementById('calcOutput');
+
+            const getMinValue = function () {
+                calcOutput.innerText = '';
+
+                if (!calcInput.value) return;
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/calculate/min');
+                xhr.onload = function () {
+                    calcOutput.innerHTML = this.responseText;
+                };
+                xhr.onerror = (err) => console.log(err);
+                xhr.send(calcInput.value);
+            };
+
+            calcSubmit.addEventListener('click', getMinValue);
+
+            // File explorer
+            const treeSubmit = document.getElementById('treeSubmit');
+            const treeOutput = document.getElementById('treeOutput');
+
+            const getFileTree = function () {
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/file-tree');
+                xhr.onload = function () {
+                    const data = JSON.parse(this.responseText);
+                    let result = '';
+
+                    if (data && data.length) {
+                        data.forEach((i) => result += `${i}\r\n`)
+
+                    }
+                    treeOutput.innerHTML = result;
+
+                    treeSubmit.remove();
+                };
+                xhr.onerror = (err) => console.log(err);
+                xhr.send();
+            };
+
+            treeSubmit.addEventListener('click', getFileTree);
+
+        }
+    </script>
+
+</head>
+<body>
+
+<form action="">
+    <h2>Find minimum</h2>
+
+    <label for="calcInput">Set numbers</label>
+
+    <input type="text"
+           id="calcInput">
+
+    <button type="button"
+            id="calcSubmit">Calculate</button>
+
+    <p>Result: <mark id="calcOutput"></mark></p>
+</form>
+
+<hr>
+
+<form action="">
+    <h2>File explorer</h2>
+
+    <button type="button"
+            id="treeSubmit">Get files</button>
+
+    <pre id="treeOutput"></pre>
+</form>
+
+</body>
+</html>
