@@ -1,0 +1,20 @@
+{
+  "list": [
+    {
+      "id": 1,
+      "name": "Margarita"
+    },
+    {
+      "id": 2,
+      "name": "Vegan"
+    },
+    {
+      "id": 3,
+      "name": "Country"
+    },
+    {
+      "id": 4,
+      "name": "Spicy"
+    }
+  ]
+}
