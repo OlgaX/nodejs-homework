@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pizza Store</title>
+
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<div class="container py-3">
+
+  <div class="badge badge-dark mb-4">Pizza Store</div>
+
+  <!-- Create order -->
+  <form name="createForm"
+        class="row">
+    <div class="col">
+      <header class="h5">Create order</header>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col col-sm-7">
+            <select data-menu
+                    name="menu"
+                    class="form-control">
+              <option value=""
+                      selected
+                      disabled>Choose pizza</option>
+            </select>
+          </div>
+
+          <div class="col-auto">
+            <button type="button"
+                    data-addToCart
+                    class="btn btn-outline-primary">Add to Cart</button>
+          </div>
+        </div>
+
+        <div hidden
+             data-output
+             class="mt-2 text-info">Order #<mark data-orderId></mark> was created!</div>
+      </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="col-sm-auto ml-sm-auto">
+      <div class="card bg-light">
+        <div class="card-header d-flex">
+          <header class="h5 my-auto mr-3">Cart</header>
+          <button type="button"
+                  id="createOrderBtn"
+                  class="btn btn-sm btn-primary ml-auto">Create</button></div>
+        <div class="card-body">
+          <div class="card-text">
+              <pre data-cartEmpty
+                   class="mb-0">Cart is empty ...</pre>
+              <pre data-cart
+                   hidden
+                   class="mb-0"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <hr>
+
+  <!-- Update order -->
+  <form name="updateForm"
+        class="row">
+    <div class="col">
+      <header class="h5">Update order</header>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col col-sm-7">
+            <select data-order
+                    name="order"
+                    class="form-control">
+              <option value=""
+                      selected
+                      disabled>Choose order</option>
+            </select>
+          </div>
+
+          <div class="col-auto">
+            <button type="button"
+                    data-getOrder
+                    class="btn btn-outline-primary">Get Order</button>
+          </div>
+        </div>
+
+        <div hidden
+             data-output
+             class="mt-2 text-info">Order #<mark data-orderId></mark> was updated!</div>
+      </div>
+
+      <div id="menuForUpdateOrder"
+           hidden
+           class="form-group">
+        <div class="row">
+          <div class="col col-sm-7">
+            <select data-menu
+                    name="menu"
+                    class="form-control">
+              <option value=""
+                      selected
+                      disabled>Choose Pizza</option>
+            </select>
+          </div>
+
+          <div class="col-auto">
+            <button type="button"
+                    data-addToCart
+                class="btn btn-outline-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="col-sm-auto ml-sm-auto">
+      <div class="card bg-light">
+        <div class="card-header d-flex">
+          <header class="h5 my-auto mr-3">Cart</header>
+          <button type="button"
+                  id="updateOrderBtn"
+                  class="btn btn-sm btn-primary ml-auto">Update</button></div>
+        <div class="card-body">
+          <div class="card-text">
+            <pre data-cartEmpty
+                 class="mb-0">Cart is empty ...</pre>
+            <pre data-cart
+                 hidden
+                 class="mb-0"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <hr>
+
+  <!-- Delete order -->
+  <form name="deleteForm"
+        class="row">
+    <div class="col">
+      <header class="h5">Delete order</header>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col col-sm-7">
+            <select data-order
+                    name="order"
+                    class="form-control">
+              <option value=""
+                      selected
+                      disabled>Choose order</option>
+            </select>
+          </div>
+
+          <div class="col-auto">
+            <button type="button"
+                    data-getOrder
+                    class="btn btn-outline-primary">Get Order</button>
+          </div>
+        </div>
+
+        <div hidden
+             data-output
+             class="mt-2 text-info">Order #<mark data-orderId></mark> was deleted!</div>
+      </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="col-sm-auto ml-sm-auto">
+      <div class="card bg-light">
+        <div class="card-header d-flex">
+          <header class="h5 my-auto mr-3">Cart</header>
+          <button type="button"
+                  id="deleteOrderBtn"
+                  class="btn btn-sm btn-danger ml-auto">Delete</button></div>
+        <div class="card-body">
+          <div class="card-text">
+            <pre data-cartEmpty
+                 class="mb-0">Cart is empty ...</pre>
+            <pre data-cart
+                 hidden
+                 class="mb-0"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+<script src="scripts.js"></script>
+
+</body>
+</html>
